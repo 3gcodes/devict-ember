@@ -1,3 +1,28 @@
-<h2 id="title">Welcome to Ember</h2>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {{#link-to 'index' class="navbar-brand"}}Board Game Geek{{/link-to}}
+    </div>
 
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+      	<li>{{#link-to 'games'}}All The Games{{/link-to}}</li>
+      	<li>{{#link-to 'collection'}}My Collection{{/link-to}}</li>
+        <li>{{#link-to 'about'}}About{{/link-to}}</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" {{action 'showModal' 'login-modal'}}>Login</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
 {{outlet}}
+{{outlet 'modal'}}
+</div>

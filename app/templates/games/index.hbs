@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-6">
+    {{#each flashMessages.queue as |flash|}}
+      {{flash-message flash=flash}}
+    {{/each}}
+  </div>
+</div>
+<div class="row">
+	{{#each model as |game|}}
+  		<div class="col-sm-4 col-md-2">
+        <div class="thumbnail">
+          <img src="assets/images/{{game.image}}">
+          <div class="caption">
+            <h5>{{#link-to 'games.game' game}}{{game.title}}{{/link-to}}</h5>
+            <p><button class="btn btn-primary" {{action 'addToCollection' game.id}}><span class="glyphicon glyphicon-plus"></span></button></p>
+          </div>
+        </div>
+      </div>
+	{{/each}}
+</div>
+<button {{action 'addGame'}} class="btn btn-sm btn-success">{{#if isAddingGame}}Cance Add Game{{else}}Add Game{{/if}}</button>
+{{#if isAddingGame}}
+<div class="row">
+	<div class="col-md-6">
+		<h4>Add New Game</h4>
+		<hr/>
+		<form class="form-horizontal">
+  			<div class="form-group">
+    			<label for="title" class="sr-only">Email</label>
+    			<div class="col-sm-10">
+      				{{input class="form-control" id="title" placeholder="Title" value=title}}
+    			</div>
+  			</div>
+  			<div class="form-group">
+  				<label for="description" class="sr-only">Description</label>
+  				<div class="col-sm-10">
+  					{{textarea class="form-control" id="description" placeholder="Description" value=description}}
+  				</div>
+  			</div>
+  			<div class="form-group">
+    			<label for="image" class="sr-only">Image</label>
+    			<div class="col-sm-10">
+      				{{input class="form-control" id="image" placeholder="Image" value=image}}
+    			</div>
+  			</div>
+  			<div class="form-group">
+    			<div class="col-sm-10">
+      				<button {{action "newGame"}} type="submit" class="btn btn-primary btn-sm">Save</button>
+    			</div>
+  			</div>
+  		</form>
+  	</div>
+</div>
+{{/if}}
